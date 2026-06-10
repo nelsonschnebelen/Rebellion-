@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Night sky base -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#050505"/>
+      <stop offset="0.55" stop-color="#121212"/>
+      <stop offset="1" stop-color="#1a0a0a"/>
+    </linearGradient>
+    <!-- Red glow rising from the pitch -->
+    <radialGradient id="pitchGlow" cx="0.5" cy="1.05" r="0.9">
+      <stop offset="0" stop-color="#B91C1C" stop-opacity="0.55"/>
+      <stop offset="0.45" stop-color="#7f1414" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#050505" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Gold halo behind the headline area -->
+    <radialGradient id="goldHalo" cx="0.5" cy="0.42" r="0.55">
+      <stop offset="0" stop-color="#EAB308" stop-opacity="0.10"/>
+      <stop offset="0.6" stop-color="#EAB308" stop-opacity="0.03"/>
+      <stop offset="1" stop-color="#EAB308" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Floodlight beams -->
+    <linearGradient id="beamL" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#F5F5F4" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#F5F5F4" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="beamR" x1="1" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#F5F5F4" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#F5F5F4" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Crowd halftone -->
+    <pattern id="crowd" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.6" fill="#F5F5F4"/>
+      <circle cx="10" cy="10" r="1.2" fill="#F5F5F4"/>
+    </pattern>
+    <linearGradient id="crowdFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.55" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="0.8" stop-color="#fff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="crowdMask">
+      <rect x="0" y="430" width="1920" height="340" fill="url(#crowdFade)"/>
+    </mask>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0"/>
+    </filter>
+    <!-- Vignette -->
+    <radialGradient id="vignette" cx="0.5" cy="0.5" r="0.75">
+      <stop offset="0.6" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.65"/>
+    </radialGradient>
+    <g id="star">
+      <path d="M0,-11 L2.7,-3.6 L10.5,-3.4 L4.3,1.4 L6.6,8.9 L0,4.4 L-6.6,8.9 L-4.3,1.4 L-10.5,-3.4 L-2.7,-3.6 Z"/>
+    </g>
+  </defs>
+
+  <!-- Base layers -->
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect width="1920" height="1080" fill="url(#pitchGlow)"/>
+  <rect width="1920" height="1080" fill="url(#goldHalo)"/>
+
+  <!-- Floodlight beams from the top corners -->
+  <polygon points="120,-40 420,-40 980,1080 520,1080" fill="url(#beamL)" filter="url(#soft)"/>
+  <polygon points="1500,-40 1800,-40 1400,1080 940,1080" fill="url(#beamR)" filter="url(#soft)"/>
+
+  <!-- Distant crowd band -->
+  <rect x="0" y="430" width="1920" height="340" fill="url(#crowd)" mask="url(#crowdMask)" opacity="0.5"/>
+
+  <!-- Stadium tier line -->
+  <path d="M0,770 Q960,690 1920,770" fill="none" stroke="#262626" stroke-width="3"/>
+  <path d="M0,770 Q960,690 1920,770 L1920,1080 L0,1080 Z" fill="#0a0a0a" opacity="0.85"/>
+
+  <!-- Pitch in perspective -->
+  <g stroke="#B91C1C" fill="none">
+    <!-- touchlines converging toward the horizon -->
+    <path d="M-200,1080 L560,790" stroke-width="3" opacity="0.7"/>
+    <path d="M2120,1080 L1360,790" stroke-width="3" opacity="0.7"/>
+    <!-- halfway line -->
+    <path d="M560,790 Q960,778 1360,790" stroke-width="3" opacity="0.8"/>
+    <!-- center circle (perspective ellipse) -->
+    <ellipse cx="960" cy="905" rx="330" ry="92" stroke-width="4" opacity="0.9"/>
+    <ellipse cx="960" cy="905" rx="330" ry="92" stroke-width="14" opacity="0.12" filter="url(#soft)"/>
+  </g>
+  <!-- center spot -->
+  <ellipse cx="960" cy="905" rx="9" ry="3.5" fill="#EAB308"/>
+  <ellipse cx="960" cy="905" rx="26" ry="10" fill="#EAB308" opacity="0.25" filter="url(#soft)"/>
+
+  <!-- Gold stars drifting like embers -->
+  <g fill="#EAB308">
+    <use href="#star" transform="translate(330,300) scale(1.1)" opacity="0.8"/>
+    <use href="#star" transform="translate(250,520) scale(0.6) rotate(18)" opacity="0.4"/>
+    <use href="#star" transform="translate(520,180) scale(0.7) rotate(-12)" opacity="0.5"/>
+    <use href="#star" transform="translate(1430,240) scale(0.9) rotate(10)" opacity="0.7"/>
+    <use href="#star" transform="translate(1660,430) scale(0.6) rotate(-20)" opacity="0.45"/>
+    <use href="#star" transform="translate(1560,640) scale(0.5) rotate(8)" opacity="0.3"/>
+    <use href="#star" transform="translate(390,680) scale(0.5) rotate(-8)" opacity="0.3"/>
+    <use href="#star" transform="translate(1230,140) scale(0.55) rotate(15)" opacity="0.4"/>
+    <use href="#star" transform="translate(700,120) scale(0.45) rotate(-18)" opacity="0.35"/>
+  </g>
+
+  <!-- Camera flashes in the crowd -->
+  <g fill="#F5F5F4">
+    <circle cx="480" cy="560" r="2.5" opacity="0.9"/>
+    <circle cx="1310" cy="540" r="2" opacity="0.8"/>
+    <circle cx="860" cy="510" r="1.8" opacity="0.7"/>
+    <circle cx="1620" cy="600" r="2.2" opacity="0.8"/>
+    <circle cx="210" cy="620" r="1.8" opacity="0.7"/>
+    <circle cx="1080" cy="575" r="1.5" opacity="0.6"/>
+  </g>
+
+  <!-- Grain + vignette -->
+  <rect width="1920" height="1080" filter="url(#grain)" opacity="0.5"/>
+  <rect width="1920" height="1080" fill="url(#vignette)"/>
+</svg>

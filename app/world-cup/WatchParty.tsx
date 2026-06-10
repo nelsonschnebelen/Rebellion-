@@ -225,14 +225,14 @@ export default function WatchParty() {
 
             {/* Hero */}
             <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 opacity-40">
+                <div className="absolute inset-0 opacity-90">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                        src="/images/IMG_1294.jpg"
-                        alt="Rebellion bar"
+                        src="/images/world-cup-hero.svg"
+                        alt="Stadium under floodlights"
                         className="absolute inset-0 w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-matte-black via-matte-black/60 to-black/70" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-matte-black via-transparent to-black/40" />
                 </div>
 
                 <div className="relative z-10 max-w-5xl mx-auto px-6 text-center py-24">
