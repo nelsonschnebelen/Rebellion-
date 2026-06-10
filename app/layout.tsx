@@ -3,8 +3,9 @@ import "./globals.css";
 import FacebookPixel from "@/components/FacebookPixel";
 
 export const metadata: Metadata = {
-    title: "A Rebel's Romance | February Italian Pop-Up",
-    description: "Experience handmade pasta and Italian romance at Rebellion Beachside Bar & Bistro. February only.",
+    title: "World Cup 2026 Watch Party | Rebellion",
+    description:
+        "Every USA match and the knockout rounds at Rebellion. No cover, first come first served. $5 Goal Beers, $4 Half-Time Pours, $3 Goal Shots.",
 };
 
 export default function RootLayout({
